@@ -30,12 +30,11 @@ Widget foodCard(
           ),
         ),
         SizedBox(height: 4),
-        SizedBox(
-            width: 96,
-            height: 94,
-            child: Image.asset(
-              imagePath,
-            )),
+        Image.asset(
+          width: 96,
+          height: 94,
+          imagePath,
+        ),
       ],
     ),
   );

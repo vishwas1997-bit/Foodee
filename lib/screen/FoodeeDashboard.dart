@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodee_app/screen/FoodeeInfoPage.dart';
 import 'package:foodee_app/screen/widget/FoodCardWidget.dart';
 
 import '../constant/AppTextStyles.dart';
@@ -93,28 +94,32 @@ class _FoodeeDashboardPageState extends State<FoodeeDashboardPage> {
                 BottomNavigationBarItem(
                   icon: Material(
                     color: Colors.transparent,
-                    child: Image.asset("assets/image/location.png", width: 24, height: 24),
+                    child: Image.asset("assets/image/location.png",
+                        width: 24, height: 24),
                   ),
                   label: 'Location',
                 ),
                 BottomNavigationBarItem(
                   icon: Material(
                     color: Colors.transparent,
-                    child: Image.asset("assets/image/User.png", width: 24, height: 24),
+                    child: Image.asset("assets/image/User.png",
+                        width: 24, height: 24),
                   ),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
                   icon: Material(
                     color: Colors.transparent,
-                    child: Image.asset("assets/image/Bag.png", width: 24, height: 24),
+                    child: Image.asset("assets/image/Bag.png",
+                        width: 24, height: 24),
                   ),
                   label: 'My Cart',
                 ),
                 BottomNavigationBarItem(
                   icon: Material(
                     color: Colors.transparent,
-                    child: Image.asset("assets/image/User.png", width: 24, height: 24),
+                    child: Image.asset("assets/image/User.png",
+                        width: 24, height: 24),
                   ),
                   label: 'Me',
                 ),
@@ -164,14 +169,11 @@ class _FoodeeDashboardPageState extends State<FoodeeDashboardPage> {
                             fontFamily: 'Unbounded',
                             fontSize: 14,
                             fontWeight: FontWeight.w300),
-                        prefixIcon: SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 24, top: 14, bottom: 14),
-                            child: Image.asset('assets/image/Search.png'),
-                          ),
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 24, top: 14, bottom: 14),
+                          child: Image.asset(
+                              width: 24, height: 24, 'assets/image/Search.png'),
                         ),
                         filled: true,
                         fillColor: Color(0XFFF5F5F5),
@@ -230,11 +232,7 @@ class _FoodeeDashboardPageState extends State<FoodeeDashboardPage> {
                   ),
                   Positioned(
                       right: 10,
-                      child: SizedBox(
-                        width: 124,
-                        height: 124,
-                        child: Image.asset('assets/image/donut.png'),
-                      ))
+                      child: Image.asset(width: 124, height: 124,'assets/image/donut.png'))
                 ],
               ),
             ),
@@ -246,11 +244,32 @@ class _FoodeeDashboardPageState extends State<FoodeeDashboardPage> {
                 scrollDirection: Axis.horizontal,
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 40),
                 children: [
-                  foodCard(
-                    title: "Burgers",
-                    color: Color(0xFFFFF3B0), // soft yellow
-                    imagePath:
-                        'assets/image/burger.png', // your burger image path
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 500),
+                          pageBuilder: (context, animation, secondaryAnimation) => FoodeeInfoPage(),
+                          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                            var begin = Offset(1.0, 0.0);
+                            var end = Offset.zero;
+                            var curve = Curves.easeInOut;
+                            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                            return SlideTransition(
+                              position: animation.drive(tween),
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: foodCard(
+                      title: "Burgers",
+                      color: Color(0xFFFFF3B0), // soft yellow
+                      imagePath:
+                      'assets/image/burger.png', // your burger image path
+                    ),
                   ),
                   SizedBox(width: 16),
                   foodCard(

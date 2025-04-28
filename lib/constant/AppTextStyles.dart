@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:foodee_app/constant/ColorConstants.dart';
 
 class AppTextStyles {
   static const String unbounded_font = 'Unbounded';
@@ -49,4 +50,25 @@ class AppTextStyles {
       fontFamily: unbounded_font,
       fontSize: 16,
       color: Color(0XFF3D405B));
+
+  static const TextStyle mrCheezyTextStyleRegular = TextStyle(
+    fontFamily: unbounded_font,
+    fontWeight: FontWeight.w400,
+    fontSize: 32,
+    color: Colors.white,
+  );
+
+  static const TextStyle classicTasteTextStyleBold = TextStyle(
+    fontFamily: unbounded_font,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: ColorConstants.pinkColor,
+  );
+
+  static const TextStyle bestSellerTextStyleBold = TextStyle(
+    fontFamily: unbounded_font,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: Colors.white,
+  );
 }
